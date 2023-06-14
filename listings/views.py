@@ -6,6 +6,7 @@ from .choices import price_choices, bedroom_choices, state_choices
 
 def index (request):
     listings = Listing.objects.order_by('-list_date').filter(is_published=True)
+    #The below three lines is for paginator project
     paginator = Paginator(listings, 3)
     page = request.GET.get('page')
     paged_listings = paginator.get_page(page)
